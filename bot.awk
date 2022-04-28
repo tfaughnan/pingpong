@@ -18,7 +18,7 @@ BEGIN {
     target = substr($1, start + 1, end - start - 1)
     printf "PRIVMSG %s :%s: when you receive a \002PING\002, ", ENVIRON["CHAN"], target
     printf "you must reply with a \002PONG\002!\r\n"
-    printf "PRIVMSG %s :for more info, see RFC 1459 sec. 4.6.2 @ ", ENVIRON["CHAN"]
-    printf "https://datatracker.ietf.org/doc/html/rfc1459#section-4.6.2\r\n"
+    printf "PRIVMSG %s :for more info, see the documentation @ ", ENVIRON["CHAN"]
+    printf "https://modern.ircdocs.horse/#ping-message\r\n"
     fflush()
 }
