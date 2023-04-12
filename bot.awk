@@ -1,4 +1,4 @@
-#!/bin/awk -f
+#!/usr/bin/awk -f
 
 BEGIN {
     printf "USER %s 8 * :deckard's PONG enforcer\r\n", ENVIRON["NICK"]
