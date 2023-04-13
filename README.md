@@ -2,9 +2,10 @@
 
 An IRC bot to make sure _other_ IRC bots respond to server pings.
 
-To run pingpong, tweak the environment variables in `run.sh` and then
-execute that file:
+The script requires a POSIX shell, awk, and socat, and requires four
+command-line arguments:
 
-`$ ./run.sh`
+`$ ./pingpong <host> <port> <nick> <chan>`
 
-This requires a POSIX shell, awk, and socat.
+The `openrc` directory contains init files for running pingpong as a supervised
+service.

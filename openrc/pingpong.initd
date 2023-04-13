@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+
+name=pingpong
+supervisor=supervise-daemon
+description="IRC bot PONG enforcer"
+command=/usr/local/bin/pingpong.sh
+command_args="$pingpong_opts"
+command_user="pingpong:pingpong"
+respawn_delay=10
+output_log="/var/log/pingpong.log"
+error_log="$output_log"
+
+depend() {
+	need net
+	after firewall
+}
+
+start_pre() {
+	checkpath -f -o "$command_user" "$output_log"
+}

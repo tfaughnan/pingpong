@@ -1,5 +1,13 @@
-#!/usr/bin/awk -f
+#!/bin/sh -eu
 
+if [ "$#" -ne 4 ]; then echo "Usage: $0 HOST PORT NICK CHAN"; exit 1; fi
+export HOST="$1"
+export PORT="$2"
+export NICK="$3"
+export CHAN="$4"
+
+AWK_SCRIPT=$(mktemp)
+cat << 'EOF' > "$AWK_SCRIPT"
 BEGIN {
     printf "USER %s 8 * :deckard's PONG enforcer\r\n", ENVIRON["NICK"]
     printf "NICK %s\r\n", ENVIRON["NICK"]
@@ -22,3 +30,6 @@ BEGIN {
     printf "https://modern.ircdocs.horse/#ping-message\r\n"
     fflush()
 }
+EOF
+
+socat -v EXEC:"awk -f $AWK_SCRIPT",sigint OPENSSL:"$HOST":"$PORT"
