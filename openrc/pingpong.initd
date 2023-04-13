@@ -3,7 +3,7 @@
 name=pingpong
 supervisor=supervise-daemon
 description="IRC bot PONG enforcer"
-command=/usr/local/bin/pingpong.sh
+command=/usr/local/bin/pingpong
 command_args="$pingpong_opts"
 command_user="pingpong:pingpong"
 respawn_delay=10
