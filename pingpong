@@ -32,4 +32,4 @@ BEGIN {
 }
 EOF
 
-socat -v EXEC:"awk -f $AWK_SCRIPT",sigint OPENSSL:"$HOST":"$PORT"
+exec socat -v EXEC:"awk -f $AWK_SCRIPT",sigint OPENSSL:"$HOST":"$PORT"
